@@ -17,7 +17,6 @@
             var lastDay = new Date(today.getFullYear(), today.getMonth() + 1, 0);
 
             var dateArray = [];
-            var dateString;
             for(var date = firstDay; date <= lastDay; date.setDate(date.getDate()+1)){                
                 if(!(date.getDay() == 0 || date.getDay() == 6)){
                     var month = date.getMonth() + 1;
@@ -25,10 +24,8 @@
                     dateArray.push( month.toString() + '/' + day.toString());
                 }
             }
-            var text = document.getElementById("text");
-            console.log(dateArray);
             var random = Math.floor( Math.random() * dateArray.length );
-            text.textContent = dateArray[random];            
+            document.getElementById("text").textContent = dateArray[random];            
        }
     </script>
 </body>

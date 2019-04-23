@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="shift-jis">
+    <title>テスト</title>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script> -->
+    <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+</head>
+<body>
+    <fomr>
+        <input type="button" value="ランスロット" onclick="slotFunc()">
+    </fomr>
+    <div id="text"></div>
+    <script>
+        var slotFunc = function(){
+            var today = new Date(2019,4,1);
+            var firstDay = new Date(today.getFullYear(), today.getMonth(), 1);
+            var lastDay = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+
+            var dateArray = [];
+            var dateString;
+            for(var date = firstDay; date <= lastDay; date.setDate(date.getDate()+1)){                
+                if(!(date.getDay() == 0 || date.getDay() == 6)){
+                    var month = date.getMonth() + 1;
+                    var day = date.getDate();
+                    dateArray.push( month.toString() + '/' + day.toString());
+                }
+            }
+            var text = document.getElementById("text");
+            console.log(dateArray);
+            var random = Math.floor( Math.random() * dateArray.length );
+            text.textContent = dateArray[random];            
+       }
+    </script>
+</body>

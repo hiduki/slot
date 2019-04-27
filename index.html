@@ -1,31 +1,93 @@
 <!DOCTYPE html>
+
 <head>
-    <meta charset="shift-jis">
-    <title>�e�X�g</title>
+    <meta charset="utf-8">
+    <title>ラン(チ)スロット</title>
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.js"></script> -->
-    <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
-</head>
-<body>
-    <fomr>
-        <input type="button" value="���@�C�X�E�t�����[�Q��" onclick="slotFunc()">
-    </fomr>
-    <div id="text"></div>
-    <script>
-        var slotFunc = function(){
-            var today = new Date(2019,4,1);
+    <!-- <link rel="stylesheet" type="text/css" href="Style/style.css"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        .body {
+            margin-top: 30px;
+            background-color: white;
+        }
+        .image img {
+            width: 100%;
+        }
+        .textDiv {
+            margin-top: 30px;
+            margin-bottom: 30px;
+            font-size: 20px;
+        }
+        #text {
+            height: 200px;
+        }
+        .hidden {
+            color: white;
+        }
+        .button {
+            margin-left: 30px;
+        }
+        #footer{
+            margin-top: 80px;
+            text-align: center;
+            width: 100%;
+            font-size: 13px;
+        }
+    </style>
+    </head>
+    
+    <body>
+        <div class="container body">
+            <div class="row">
+                <div class="col-5 image">
+                    <img src="Image/lancelot001.jpg">
+                </div>
+                <div class="col">
+                    <div class="textDiv">
+                        「お疲れさま。団長は今日も頑張ってるな。</br>
+                        そうだ、今度気晴らしにランチでも行かないか？</br>
+                        団長はいつだと都合がいいんだ？」</br></br>
+                        <div id="text1" class="hidden">
+                            『 <span id="text"></span> !! 』</br></br>
+                        </div>
+                        <div id=text2 class="hidden">
+                            「よし、この日付で決まりだな！ヴェインにも声をかけておくよ」
+                        </div>
+                    </div>
+                    <fomr>
+                        <input class="btn bg-primary text-white button" type="button" value="ヴァイス・フリューゲル"
+                            onclick="slotFunc()">
+                    </fomr>
+                </div>
+                <div id="footer">
+                    こちらのサイトは個人で楽しむものとなっております。</br>
+                    使用画像等に問題がある場合は、 <a href="https://twitter.com/hiduki_828">@hiduki_828</a> または <a href="https://twitter.com/_ako0v0">@_ako0v0</a> までご連絡お願いいたします。</br>
+                    &copy; hiduki_828 / _ako0v0 &nbsp;&nbsp; 2019.04
+                </div>    
+            </div>
+        </div>
+        <script>
+            var slotFunc = function () {
+                var today = new Date(2019, 4, 1);
             var firstDay = new Date(today.getFullYear(), today.getMonth(), 1);
             var lastDay = new Date(today.getFullYear(), today.getMonth() + 1, 0);
 
             var dateArray = [];
-            for(var date = firstDay; date <= lastDay; date.setDate(date.getDate()+1)){                
-                if(!(date.getDay() == 0 || date.getDay() == 6)){
+            for (var date = firstDay; date <= lastDay; date.setDate(date.getDate() + 1)) {
+                if (!(date.getDay() == 0 || date.getDay() == 6)) {
                     var month = date.getMonth() + 1;
                     var day = date.getDate();
-                    dateArray.push( month.toString() + '/' + day.toString());
+                    dateArray.push(month.toString() + '/' + day.toString());
                 }
             }
-            var random = Math.floor( Math.random() * dateArray.length );
-            document.getElementById("text").textContent = dateArray[random];            
-       }
+            var random = Math.floor(Math.random() * dateArray.length);
+            var textStr = dateArray[random];
+            document.getElementById("text").textContent = textStr;
+            document.getElementById("text1").classList.remove('hidden');
+            document.getElementById("text2").classList.remove('hidden');
+        }
     </script>
 </body>
+
+
